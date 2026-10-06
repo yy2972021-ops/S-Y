@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shine & May - Been In Love</title>
+  <title>BEEN IN LOVE - Shine & May</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -22,109 +26,159 @@
     }
 
     .container {
-      width: 100%;
-      max-width: 380px;
       background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border-radius: 25px;
-      padding: 30px 20px;
-      box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
+      padding: 35px 25px;
+      max-width: 450px;
+      width: 100%;
       text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.6);
     }
 
     .title {
-      color: #ff4757;
-      font-size: 1.2rem;
-      font-weight: bold;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e63946;
+      letter-spacing: 2px;
       margin-bottom: 25px;
-      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    .profiles {
+    .couples {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
-    .avatar-box {
+    .profile {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .avatar {
-      width: 85px;
-      height: 85px;
+    .profile img {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      border: 3px solid #ff6b81;
       object-fit: cover;
-      box-shadow: 0 5px 15px rgba(255, 107, 129, 0.3);
-      background-color: #ffeaa7;
+      border: 4px solid #fff;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
     }
 
-    .name {
-      margin-top: 10px;
-      font-weight: 700;
-      color: #2f3542;
+    .profile img:hover {
+      transform: scale(1.08);
+    }
+
+    .profile .name {
+      margin-top: 8px;
+      font-weight: 600;
+      color: #333;
       font-size: 1rem;
     }
 
-    .heart-icon {
-      font-size: 2.2rem;
-      color: #ff4757;
-      animation: pulse 1.5s infinite;
+    .music-btn-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-      100% { transform: scale(1); }
+    .music-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ff4b5c;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 75, 92, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.1);
+      background: #e63946;
+    }
+
+    .music-btn.playing {
+      animation: spin 3s linear infinite;
+      box-shadow: 0 0 18px rgba(255, 75, 92, 0.8);
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .music-text {
+      font-size: 0.75rem;
+      margin-top: 6px;
+      color: #666;
+      font-weight: 500;
     }
 
     .counter-card {
       background: #ffffff;
+      padding: 20px 15px;
       border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 8px 20px rgba(255, 71, 87, 0.12);
-      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
     }
 
-    .days-label {
-      font-size: 0.9rem;
-      color: #747d8c;
-      margin-bottom: 5px;
+    .counter-title {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 15px;
       font-weight: 600;
     }
 
-    .days-count {
-      font-size: 3.2rem;
-      font-weight: 800;
-      color: #ff4757;
-      line-height: 1.1;
+    .cooldown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .days-unit {
-      font-size: 1rem;
-      color: #ff6b81;
-      font-weight: bold;
+    .cd-box {
+      background: linear-gradient(145deg, #fff5f6, #ffe3e6);
+      border-radius: 12px;
+      padding: 10px;
+      min-width: 70px;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    .cd-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ff4b5c;
+      line-height: 1.2;
+    }
+
+    .cd-label {
+      font-size: 0.7rem;
+      color: #777;
+      text-transform: uppercase;
       letter-spacing: 1px;
       margin-top: 2px;
     }
 
     .start-date {
       font-size: 0.85rem;
-      color: #a4b0be;
-      margin-top: 12px;
+      color: #888;
+      margin-top: 15px;
     }
 
-    .quote-box {
-      background: rgba(255, 234, 234, 0.7);
-      padding: 12px 15px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      color: #57606f;
-      font-style: italic;
+    .quote {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      color: #444;
+      line-height: 1.4;
     }
   </style>
 </head>
@@ -133,50 +187,109 @@
   <div class="container">
     <div class="title">BEEN IN LOVE</div>
 
-    <!-- Profiles -->
-    <div class="profiles">
-      <div class="avatar-box">
-        <img src="Shine.jpg" alt="Shine" class="avatar">
+    <div class="couples">
+      <div class="profile">
+        <img src="Shine.jpg" alt="Shine">
         <div class="name">Shine</div>
       </div>
 
-      <div class="heart-icon">💖</div>
+      <div class="music-btn-container">
+        <button class="music-btn" id="playBtn" onclick="toggleAudio()">
+          <i class="fa-solid fa-music" id="musicIcon"></i>
+        </button>
+        <span class="music-text" id="musicStatus">Music Off</span>
+      </div>
 
-      <div class="avatar-box">
-        <img src="May.jpg" alt="May" class="avatar">
+      <div class="profile">
+        <img src="May.jpg" alt="May">
         <div class="name">May</div>
       </div>
     </div>
 
-    <!-- Days Counter -->
     <div class="counter-card">
-      <div class="days-label">တွဲခဲ့သည့် ရက်ပေါင်း</div>
-      <div class="days-count" id="daysCount">0</div>
-      <div class="days-unit">DAYS</div>
+      <div class="counter-title">တွဲခဲ့သည့် သက်တမ်း</div>
+      
+      <div class="cooldown-grid">
+        <div class="cd-box">
+          <div class="cd-number" id="days">00</div>
+          <div class="cd-label">DAYS</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-number" id="hours">00</div>
+          <div class="cd-label">HOURS</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-number" id="minutes">00</div>
+          <div class="cd-label">MINS</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-number" id="seconds">00</div>
+          <div class="cd-label">SECS</div>
+        </div>
+      </div>
+
       <div class="start-date">Start Date: 2025-10-09</div>
     </div>
 
-    <!-- Love Quote -->
-    <div class="quote-box">
+    <div class="quote">
       "Every love story is beautiful, but ours is my favorite." ✨
     </div>
   </div>
 
-  <script>
-    const startDateStr = "2025-10-09";
+  <!-- သီချင်းဖိုင်အမည် ပြင်ဆင်ထားသည့်နေရာ -->
+  <audio id="bgMusic" loop>
+    <source src="song.mp3(128k).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-    function calculateDays() {
-      const start = new Date(startDateStr);
-      const today = new Date();
-      
-      const diffTime = Math.abs(today - start);
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      
-      document.getElementById('daysCount').innerText = diffDays;
+  <script>
+    const startDate = new Date("2025-10-09T00:00:00");
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / 1000 / 60) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("days").innerText = String(days).padStart(2, '0');
+        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+      } else {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+      }
     }
 
-    calculateDays();
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    const audio = document.getElementById("bgMusic");
+    const playBtn = document.getElementById("playBtn");
+    const musicIcon = document.getElementById("musicIcon");
+    const musicStatus = document.getElementById("musicStatus");
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+        playBtn.classList.add("playing");
+        musicIcon.className = "fa-solid fa-compact-disc";
+        musicStatus.innerText = "Playing";
+      } else {
+        audio.pause();
+        playBtn.classList.remove("playing");
+        musicIcon.className = "fa-solid fa-music";
+        musicStatus.innerText = "Music Off";
+      }
+    }
   </script>
+
 </body>
 </html>
 
